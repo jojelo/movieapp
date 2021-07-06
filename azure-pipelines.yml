@@ -25,20 +25,20 @@ steps:
     projectDirectory: '.'
     buildNumber: '1'
 
-- task: CopyFiles@2
-  displayName: 'copiando apk'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/build/app/outputs/flutter-apk'
-    Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    OverWrite: true
+# - task: CopyFiles@2
+#   displayName: 'copiando apk'
+#   inputs:
+#     SourceFolder: '$(Build.SourcesDirectory)/build/app/outputs/flutter-apk'
+#     Contents: '**'
+#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+#     OverWrite: true
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publicando apk'
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'miapk'
-    publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Publicando apk'
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'miapk'
+#     publishLocation: 'Container'
 
 - task: AppCenterDistribute@3
   displayName: 'Distribuyendo APK'
