@@ -22,5 +22,6 @@ steps:
   inputs:
     target: 'apk'
     projectDirectory: '.'
+    buildNumber: '1'
 
 
