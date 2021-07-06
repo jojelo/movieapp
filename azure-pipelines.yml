@@ -3,6 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+name: $(BuildDefinitionName)-$(Rev:.r)
+
 trigger:
 - master
 
@@ -19,7 +21,7 @@ steps:
     customVersion: '1.22.5'
 
 - task: FlutterBuild@0
-  displayName: 'Generando el apk'
+  displayName: 'Generando el apk - $(Build.BuildNumber)'
   inputs:
     target: 'apk'
     projectDirectory: '.'
@@ -50,4 +52,4 @@ steps:
     releaseNotesOption: 'input'
     releaseNotesInput: 'build automatico'
     destinationType: 'groups'
-    distributionGroupId: 'lwp'
+    distributionGroupId: 'ed9a84a5-eb41-4fc2-aeea-723fc0fec105'
