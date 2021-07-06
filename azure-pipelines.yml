@@ -39,3 +39,15 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'miapk'
     publishLocation: 'Container'
+
+- task: AppCenterDistribute@3
+  displayName: 'Distribuyendo APK'
+  inputs:
+    serverEndpoint: 'app center movieapp'
+    appSlug: 'jojelo.25-gmail.com/movieapp'
+    appFile: '$(Build.SourcesDirectory)/build/app/outputs/flutter-apk/app-release.apk'
+    symbolsOption: 'Android'
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'build automatico'
+    destinationType: 'groups'
+    distributionGroupId: 'lwp'
