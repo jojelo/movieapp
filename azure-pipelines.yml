@@ -19,9 +19,23 @@ steps:
     customVersion: '1.22.5'
 
 - task: FlutterBuild@0
+  displayName: 'Generando el apk'
   inputs:
     target: 'apk'
     projectDirectory: '.'
     buildNumber: '1'
 
+- task: CopyFiles@2
+  displayName: 'copiando apk'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)/build/app/outputs/flutter-apk'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    OverWrite: true
 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publicando apk'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'miapk'
+    publishLocation: 'Container'
